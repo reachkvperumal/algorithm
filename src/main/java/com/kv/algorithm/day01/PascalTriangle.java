@@ -1,7 +1,11 @@
 package com.kv.algorithm.day01;
 
 public class PascalTriangle {
-
+    /**
+     *
+     * @param row
+     * @return specific row for the Pascal Triangle
+     */
     static int[] compute(int row){
 
         if(row == 0){
