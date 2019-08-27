@@ -1,5 +1,8 @@
 package com.kv.algorithm.day02;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DiagonalTraverse {
 
     /**
@@ -10,6 +13,32 @@ public class DiagonalTraverse {
      * ]
      */
 
+    static void compute(int[][] matrix) {
+        int r = matrix.length;
+        int c = matrix[0].length;
+
+        int[] nArray = new int[r * c];
+
+        int currentRow = 0;
+        int currentColumn = 0;
+        List<Integer> diagonal = new ArrayList<>();
+        for (int i = 0; i < r; i++) {
+            diagonal.add(matrix[currentRow][currentColumn]);
+            if (currentColumn < c)
+                currentColumn++;
+
+            diagonal.add(matrix[currentRow][currentColumn]);
+
+            if (currentRow < r)
+                currentRow++;
+
+            diagonal.add(matrix[currentRow][currentColumn]);
+
+
+        }
+
+
+    }
 
 
     public static void main(String[] args) {
