@@ -23,9 +23,9 @@ public class Palindrome {
     public static void main(String[] args) {
         String palindrome = "RADAR";
         System.out.println(compute(palindrome));
-
-        System.out.println(IntStream.range(0, palindrome.length())
-                .noneMatch(i -> palindrome.charAt(i) != palindrome.charAt(palindrome.length() - 1 - i)));
+        int size = palindrome.length();
+        System.out.println(IntStream.range(0, size)
+                .allMatch(i -> palindrome.charAt(i) == palindrome.charAt(size - 1 - i)));
 
 
     }
