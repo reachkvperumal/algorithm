@@ -2,33 +2,24 @@ package com.kv.algorithm.day07;
 
 public class SelectionSort {
 
-    static char[] compute(char[] chars) {
-        char[] result = new char[chars.length - 1];
-        int pos = 1;
-        do {
-            char min = chars[pos - 1];
-            for (int i = pos; i < chars.length; i++) {
-                if (min >= chars[i]) {
-                    char temp = chars[i];
-                    chars[i] = min;
-                    min = temp;
+    static char[] selectionSort(char[] input) {
+
+        for (int i = 0; i < input.length; i++) {
+            for (int j = i + 1; j < input.length; j++) {
+                if (input[i] > input[j]) {
+                    char temp = input[j];
+                    input[j] = input[i];
+                    input[i] = temp;
                 }
-
             }
-            result[pos - 1] = min;
-
-            pos++;
-
-        } while (pos < chars.length);
-
-        return result;
+        }
+        return input;
     }
-
     public static void main(String[] args) {
-
         String chars = "SORTEXAMPLE";
-        char[] result = compute(chars.toCharArray());
+        //String chars = "Process finished with exit code 0";
+        char[] result = selectionSort(chars.toCharArray());
         System.out.println(result);
-        System.out.println("AEELMOPRST".equals(new String(result)));
+        System.out.println("AEELMOPRSTX".equals(new String(result)));
     }
 }
