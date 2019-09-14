@@ -3,33 +3,33 @@ package com.kv.algorithm.day09;
 public class QuickSort {
 
     static void swap(int[] input, int i, int j) {
-        int tmp = input[i];
+        int temp = input[i];
         input[i] = input[j];
-        input[j] = tmp;
+        input[j] = temp;
     }
 
-    static void sort(int[] input, int min, int max) {
+    static int partition(int[] input, int start, int end) {
+        int pivot = input[end];
+        int i = start;
 
-        if (min < max) {
-            int pivot = partition(input, min, max);
-            sort(input, min, pivot - 1);
-            sort(input, pivot + 1, max);
-        }
-
-    }
-
-    static int partition(int[] input, int min, int max) {
-        int pivot = input[max];
-        int i = min;
-        for (int j = min; j < max; j++) {
+        for (int j = start; j < end; j++) {
             if (input[j] < pivot) {
                 swap(input, i, j);
                 i++;
             }
         }
-        swap(input, i, max);
+        swap(input, i, end);
         return i;
     }
+
+    static void sort(int[] input, int start, int end) {
+        if (start < end) {
+            int pivot = partition(input, start, end);
+            sort(input, start, pivot - 1);
+            sort(input, pivot + 1, end);
+        }
+    }
+
 
     public static void main(String[] args) {
         int[] input = {4, 3, 20, 13, 6, 7, 5, 11, 19, 2, 3};
