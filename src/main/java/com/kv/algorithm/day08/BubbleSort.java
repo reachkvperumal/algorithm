@@ -4,12 +4,12 @@ public class BubbleSort {
 
     static char[] bubbleSort(char[] input) {
 
-        for (int i = 0; i < input.length; i++) {
-            for (int j = input.length - 1; j > i; j--) {
-                if (input[i] > input[j]) {
-                    char temp = input[i];
-                    input[i] = input[j];
-                    input[j] = temp;
+        for (int i = input.length - 1; i > -1; i--) {
+            for (int j = 0; j < i; j++) {
+                if (input[j] > input[j + 1]) {
+                    char temp = input[j];
+                    input[j] = input[j + 1];
+                    input[j + 1] = temp;
                 }
             }
         }

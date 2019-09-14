@@ -20,8 +20,11 @@ public class PivotIndex {
     }
 
     public static void main(String[] args) {
-        int[] nums = {-1,-3,1,2,3,4,3,5,9};
-        System.out.println(compute(nums));
+        //int[] nums = {-1,-3,1,2,3,4,3,5,9};
+        // int[] nums = {2,8,6,7,9};
+        int[] nums = {1, 1, 2, 1, 5, 5};
+        int compute = compute(nums);
+        System.out.println(compute + " : " + nums[compute]);
     }
 
 }
