@@ -3,7 +3,7 @@ Prepare for algorithm based interview
 
 ![image](https://cdn-images-1.medium.com/max/1360/1*5qdPLs4x9TuabvQJwu7iuA.png)
 
-# Overloading Rules
+# Overloading Rules - Java
 
 # Rule 1 #
 #If there is an exact match between the number and types of arguments specified in the method call and the method signature of an overloaded method then that is the method that
