@@ -16,7 +16,7 @@ public class MergeSort {
 
         while (leftPointer < left.length || rightPointer < right.length) {
             if (leftPointer < left.length && rightPointer < right.length) {
-                if (left[leftPointer] < right[rightPointer])
+                if (left[leftPointer] <= right[rightPointer])
                     aux[auxPointer++] = left[leftPointer++];
                 else
                     aux[auxPointer++] = right[rightPointer++];
