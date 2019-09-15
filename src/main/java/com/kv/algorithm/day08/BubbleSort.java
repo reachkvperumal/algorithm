@@ -1,15 +1,29 @@
 package com.kv.algorithm.day08;
 
 public class BubbleSort {
-
+    /**
+     * https://mathbits.com/MathBits/Java/arrays/Bubble.htm
+     * In the bubble sort,as elements are sorted they gradually "bubble"(or rise) to their proper location in the array,
+     * like bubbles rising in a glass of soda. The bubble sort repeatedly compares adjacent elements of an array.
+     * The first and second elements are compared and swapped if out of order.
+     * Then the second and third elements are compared and swapped if out of order.
+     * This sorting process continues until the last two elements of the array are compared and swapped if out of order.
+     *
+     * @param input
+     * @return
+     */
     static char[] bubbleSort(char[] input) {
 
-        for (int i = input.length - 1; i > -1; i--) {
-            for (int j = 0; j < i; j++) {
-                if (input[j] > input[j + 1]) {
-                    char temp = input[j];
-                    input[j] = input[j + 1];
-                    input[j + 1] = temp;
+        boolean flag = true;
+
+        while (flag) {
+            flag = false;
+            for (int i = 0; i < input.length - 1; i++) {
+                if (input[i] > input[i + 1]) {
+                    char c = input[i];
+                    input[i] = input[i + 1];
+                    input[i + 1] = c;
+                    flag = true;
                 }
             }
         }
