@@ -2,7 +2,7 @@ package com.kv.algorithm.day10;
 
 public class QuickSortWithHoareAndLomoto {
 
-    private enum SortType {
+    private static enum SortType {
         HOARES,
         LOMOTO;
     }
