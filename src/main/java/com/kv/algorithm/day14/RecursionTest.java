@@ -2,6 +2,10 @@ package com.kv.algorithm.day14;
 
 public class RecursionTest {
 
+    static int getInt() {
+        return Integer.MIN_VALUE;
+    }
+
     static boolean compute(long[] arr, long k, int start, boolean left) {
 
         if (left && k == 0)
