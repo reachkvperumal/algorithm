@@ -1,4 +1,4 @@
-package com.kv.algorithm.day15;
+package com.kv.algorithm.day16;
 
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.introspector.Property;
@@ -8,40 +8,15 @@ import org.yaml.snakeyaml.representer.Representer;
 
 import java.util.List;
 
-public class TreeNode {
-    private TreeNode left;
-    private TreeNode right;
+public class TreeNodeN {
+
     private int key;
-    private List<TreeNode> child;
+    private List<TreeNodeN> childs;
 
-
-    public List<TreeNode> getChild() {
-        return child;
-    }
-
-    public void setChild(List<TreeNode> child) {
-        this.child = child;
-    }
-
-    public TreeNode(int key) {
+    public TreeNodeN(int key) {
         this.key = key;
     }
 
-    public TreeNode getLeft() {
-        return left;
-    }
-
-    public void setLeft(TreeNode left) {
-        this.left = left;
-    }
-
-    public TreeNode getRight() {
-        return right;
-    }
-
-    public void setRight(TreeNode right) {
-        this.right = right;
-    }
 
     public int getKey() {
         return key;
@@ -51,12 +26,16 @@ public class TreeNode {
         this.key = key;
     }
 
+    public List<TreeNodeN> getChilds() {
+        return childs;
+    }
+
+    public void setChilds(List<TreeNodeN> childs) {
+        this.childs = childs;
+    }
+
     @Override
     public String toString() {
-        // DumperOptions options = new DumperOptions();
-        //options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
-        //options.setPrettyFlow(true);
-        //Yaml yaml = new Yaml();
         return new Yaml(new Representer() {
             @Override
             protected NodeTuple representJavaBeanProperty(Object javaBean, Property property, Object propertyValue, Tag customTag) {
@@ -68,6 +47,5 @@ public class TreeNode {
                 }
             }
         }).dump(this);
-
     }
 }
