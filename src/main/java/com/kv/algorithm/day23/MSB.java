@@ -13,7 +13,7 @@ public class MSB {
 
     public static void main(String[] args) {
         System.out.println("MSB");
-
+        System.out.println(Math.abs(Math.abs(-10)));
 
     }
 
