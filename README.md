@@ -44,7 +44,7 @@ Prepare for algorithm based interview
 # Connected to the network
 ## git remote show origin
 
-#ETC
+# ETC
 ## git add -A && git commit -m "<<YOUR MESSAGE>>"
 ## C:\Program Files (x86)\Common Files\Oracle\Java\javapath
 ## https://scotch.io/tutorials/how-to-push-an-existing-project-to-github
