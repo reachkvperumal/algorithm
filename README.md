@@ -32,3 +32,18 @@ Prepare for algorithm based interview
 #A primitive type will be widened to the smallest available primitive (e.g. widening a byte to an int will be choosen ahead of widening to a long).
 # Rule 13 #
 #A method using varargs will only be chosen if is there is no other overloaded version that is applicable.
+
+# Important links & commands
+
+## $ grep '^\(.\)\(.\).\2\1$' /usr/share/dict/words | head
+## $ find . -name '*.java' -exec grep -i 'public' '{}' \; -print | less
+
+# Without connected to the network 
+## git config --get remote.origin.url
+
+# Connected to the network
+## git remote show origin
+
+#ETC
+## C:\Program Files (x86)\Common Files\Oracle\Java\javapath
+## https://scotch.io/tutorials/how-to-push-an-existing-project-to-github
