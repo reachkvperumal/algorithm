@@ -38,6 +38,9 @@ Prepare for algorithm based interview
 ## $ grep '^\(.\)\(.\).\2\1$' /usr/share/dict/words | head
 ## $ find . -name '*.java' -exec grep -i 'public' '{}' \; -print | less
 
+## $ find . Documents/MailAttachments -name '*.pdf' -exec grep -i 'mongo' {} \; -exec mv {} MongoDB \;
+## $ find ./Documents/MailAttachments -name '*.pdf' -exec grep -i 'mongo' '{}' \; -exec mv {} MongoDB \;
+
 # Without connected to the network 
 ## git config --get remote.origin.url
 
