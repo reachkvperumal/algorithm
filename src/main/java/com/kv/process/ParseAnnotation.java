@@ -1,50 +1,43 @@
 package com.kv.process;
 
 
-
 import com.kv.annotation.Protected;
 import com.kv.dto.PimReq;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class AnnotatedFieldPrinter {
+public class ParseAnnotation {
 
-    public static void main(String[] args) {
-        System.out.println("start...");
-
-        Class<?> rootClass = PimReq.class;
-
-        // Start BFS traversal
+    public static void init(Class<?> rootClass, Class<? extends Annotation> targetAnnotation) {
+        //BFS traversal
         Queue<Class<?>> queue = new LinkedList<>();
         queue.add(rootClass);
-
-
         while (!queue.isEmpty()) {
             Class<?> currentClass = queue.poll();
             // Check fields in the current class
             for (Field field : currentClass.getDeclaredFields()) {
 
-                if (field.isAnnotationPresent(Protected.class)) {
-                    System.out.println("Annotated field with @Protected in class " + currentClass.getSimpleName() +
-                            ": " + field.getName());
-                }else{
-                   // System.out.println("Not Present in class : "+ field.getName() + field.getType());
+                if (field.isAnnotationPresent(targetAnnotation)) {
+                    System.out.println(currentClass.getSimpleName() + ": " + field.getName());
+                } else {
                     queue.add(field.getType());
                 }
             }
-
             // Add nested classes to the queue
             for (Class<?> nestedClass : currentClass.getDeclaredClasses()) {
                 queue.add(nestedClass);
             }
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("start...");
+        init(PimReq.class, Protected.class);
         System.out.println("end...");
     }
 }
-
-// Example annotations (replace with your actual annotations)
 
 
