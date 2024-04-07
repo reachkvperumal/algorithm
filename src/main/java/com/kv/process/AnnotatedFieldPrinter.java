@@ -6,6 +6,7 @@ import com.kv.annotation.Protected;
 import com.kv.dto.PimReq;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -20,6 +21,7 @@ public class AnnotatedFieldPrinter {
         Queue<Class<?>> queue = new LinkedList<>();
         queue.add(rootClass);
 
+
         while (!queue.isEmpty()) {
             Class<?> currentClass = queue.poll();
             // Check fields in the current class
@@ -29,8 +31,8 @@ public class AnnotatedFieldPrinter {
                     System.out.println("Annotated field with @Protected in class " + currentClass.getSimpleName() +
                             ": " + field.getName());
                 }else{
-
-                    System.out.println("Not Present in class : "+ field.getName());
+                   // System.out.println("Not Present in class : "+ field.getName() + field.getType());
+                    queue.add(field.getType());
                 }
             }
 

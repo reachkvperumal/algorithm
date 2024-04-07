@@ -11,7 +11,7 @@ public class FilePreference implements Serializable {
     @Protected
     private String conType;
 
-    @Protected
+
     private Dummy1 dummy1;
 
 }
