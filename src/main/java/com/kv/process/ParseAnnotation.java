@@ -19,9 +19,9 @@ public class ParseAnnotation {
             Class<?> currentClass = queue.poll();
             // Check fields in the current class
             for (Field field : currentClass.getDeclaredFields()) {
-
                 if (field.isAnnotationPresent(targetAnnotation)) {
                     System.out.println(currentClass.getSimpleName() + ": " + field.getName());
+                    queue.add(field.getType());
                 } else {
                     queue.add(field.getType());
                 }
