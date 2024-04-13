@@ -36,7 +36,7 @@ public class TreeNodeN {
 
     @Override
     public String toString() {
-        return new Yaml(new Representer() {
+        /*return new Yaml(new Representer() {
             @Override
             protected NodeTuple representJavaBeanProperty(Object javaBean, Property property, Object propertyValue, Tag customTag) {
                 // if value of property is null, ignore it.
@@ -46,6 +46,7 @@ public class TreeNodeN {
                     return super.representJavaBeanProperty(javaBean, property, propertyValue, customTag);
                 }
             }
-        }).dump(this);
+        }).dump(this);*/
+        return null;
     }
 }
