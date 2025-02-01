@@ -1,0 +1,17 @@
+@startuml
+actor "Azure-hosted Application" as Client
+actor "Azure Firewall" as Firewall
+actor "AWS Service Provider" as Server
+
+Client -> Firewall: SYN Packet
+Firewall -> Firewall: Inspect, Evaluate, Log
+Firewall -> Server: Forward SYN Packet
+
+Server -> Firewall: SYN-ACK Packet
+Firewall -> Firewall: Inspect, Evaluate, Log
+Firewall -> Client: Forward SYN-ACK Packet
+
+Client -> Firewall: ACK Packet
+Firewall -> Firewall: Inspect, Evaluate, Log
+Firewall -> Server: Forward ACK Packet
+@enduml
