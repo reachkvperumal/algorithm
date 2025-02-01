@@ -1,0 +1,21 @@
+@startuml
+actor "Azure-hosted Application" as Client
+actor "Azure Firewall" as Firewall
+actor "AWS Service Provider" as Server
+
+Client -> Firewall: Outbound SYN Packet
+alt DNAT Rule Matches?
+  Firewall -> Firewall: Translate Destination IP/Port
+else No DNAT Match
+  alt Network Rule Matches?
+    Firewall -> Firewall: Allow/Deny Traffic
+  else No Network Match
+    alt Application Rule Matches?
+      Firewall -> Firewall: Allow/Deny Traffic
+    else No Application Match
+      Firewall -> Firewall: Implicit Deny
+    end
+  end
+end
+Firewall -> Server: Outbound SYN Packet
+@enduml
