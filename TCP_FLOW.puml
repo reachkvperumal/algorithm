@@ -1,0 +1,17 @@
+@startuml
+
+actor Client
+actor "Azure Firewall" as AF
+actor "Service Provider" as SP
+
+Client -> AF: SYN Packet
+AF -> AF: Inspect Packet
+AF -> AF: Evaluate Rules
+AF -> AF: Log Packet
+AF -> SP: Forward SYN Packet
+
+SP -> Client: SYN-ACK Packet
+Client -> AF: ACK Packet
+AF -> AF: Log Traffic Flow
+
+@enduml
