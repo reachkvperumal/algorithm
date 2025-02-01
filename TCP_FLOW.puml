@@ -10,8 +10,10 @@ AF -> AF: Evaluate Rules
 AF -> AF: Log Packet
 AF -> SP: Forward SYN Packet
 
-SP -> Client: SYN-ACK Packet
+SP -> AF: SYN-ACK Packet
+AF -> Client: Forward SYN-ACK Packet
 Client -> AF: ACK Packet
+AF -> SP: Forward ACK Packet
 AF -> AF: Log Traffic Flow
 
 @enduml
