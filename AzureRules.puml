@@ -1,0 +1,53 @@
+@startuml
+participant "Azure-hosted Application" as Client
+participant "Azure Firewall" as Firewall
+participant "AWS Service Provider" as Server
+
+Client -> Firewall: SYN
+alt NAT Rule Matches?
+  Firewall -> Firewall: Translate Destination IP/Port
+else No NAT Match
+  alt Network Rule Matches?
+    Firewall -> Firewall: Allow Traffic
+  else No Network Match
+    alt Application Rule Matches?
+      Firewall -> Firewall: Allow Traffic
+    else No Application Match
+      Firewall -> Firewall: Implicit Deny
+    end
+  end
+end
+Firewall -> Server: SYN
+
+Server -> Firewall: SYN-ACK
+alt NAT Rule Matches?
+  Firewall -> Firewall: Translate Destination IP/Port
+else No NAT Match
+  alt Network Rule Matches?
+    Firewall -> Firewall: Allow Traffic
+  else No Network Match
+    alt Application Rule Matches?
+      Firewall -> Firewall: Allow Traffic
+    else No Application Match
+      Firewall -> Firewall: Implicit Deny
+    end
+  end
+end
+Firewall -> Client: SYN-ACK
+
+Client -> Firewall: ACK
+alt NAT Rule Matches?
+  Firewall -> Firewall: Translate Destination IP/Port
+else No NAT Match
+  alt Network Rule Matches?
+    Firewall -> Firewall: Allow Traffic
+  else No Network Match
+    alt Application Rule Matches?
+      Firewall -> Firewall: Allow Traffic
+    else No Application Match
+      Firewall -> Firewall: Implicit Deny
+    end
+  end
+end
+Firewall -> Server: ACK
+@enduml
