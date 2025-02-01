@@ -1,0 +1,24 @@
+@startuml
+start
+:Identify Traffic Direction
+(Inbound/Outbound);
+
+if (Network Rule Matches?) then (yes)
+  :Allow/Deny Traffic;
+  stop
+else (no)
+  if (Application Rule Matches?) then (yes)
+    :Allow/Deny Traffic;
+    stop
+  else (no)
+    if (NAT Rule Matches?) then (yes)
+      :Translate/Allow Traffic;
+      stop
+    else (no)
+      :Implicit Deny Rule;
+      :Deny Traffic;
+      stop
+    endif
+  endif
+endif
+@enduml
