@@ -51,3 +51,12 @@ Prepare for algorithm based interview
 ## git add -A && git commit -m "<<YOUR MESSAGE>>"
 ## C:\Program Files (x86)\Common Files\Oracle\Java\javapath
 ## https://scotch.io/tutorials/how-to-push-an-existing-project-to-github
+---
+### **Comparison Summary**
+
+| Garbage Collector  | Generational Model | Key Feature                                    | Use Case                         |
+|--------------------|--------------------|-----------------------------------------------|----------------------------------|
+| **Parallel GC**    | Yes               | Simple generational approach for throughput   | High-throughput applications    |
+| **G1GC**           | Yes               | Region-based with generational optimizations  | Balanced latency and throughput |
+| **ZGC**            | No                | Unified heap, ultra-low latency               | Large, low-latency applications |
+| **Shenandoah GC**  | No                | Unified heap, concurrent compacting           | Low-latency applications         |
