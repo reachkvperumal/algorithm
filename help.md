@@ -61,5 +61,3 @@ In the context of garbage collectors (GCs), the **"generational model"** refers 
 | **Shenandoah GC**  | No                | Unified heap, concurrent compacting           | Low-latency applications         |
 
 ---
-
-If you'd like, I can explain these GCs in greater depth or help you choose the right one for a specific application scenario!
