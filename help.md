@@ -61,3 +61,54 @@ In the context of garbage collectors (GCs), the **"generational model"** refers 
 | **Shenandoah GC**  | No                | Unified heap, concurrent compacting           | Low-latency applications         |
 
 ---
+Concurrent garbage collection refers to garbage collection techniques where most of the GC work is performed **concurrently with the application threads**, minimizing stop-the-world (STW) pauses. These collectors aim to reduce the impact of garbage collection on application responsiveness and latency.
+
+Here are the **garbage collectors** in the JVM that support concurrent collection:
+
+---
+
+### **1. G1 Garbage Collector (G1GC)**
+- **Concurrent Components:**
+  - G1GC performs **concurrent marking** to identify live objects in the heap.
+  - While application threads run, the GC identifies regions in the heap that contain the most garbage, which are collected in priority order (hence "garbage-first").
+- **Goal:** Strikes a balance between throughput and predictable pause times.
+
+---
+
+### **2. Z Garbage Collector (ZGC)**
+- **Fully Concurrent:**
+  - ZGC performs almost all its work (marking, compaction, and relocation) **concurrently** with application threads.
+  - Stop-the-world (STW) pauses are typically only a few milliseconds, regardless of heap size.
+- **Goal:** Ultra-low latency, even for very large heaps (up to terabytes).
+
+---
+
+### **3. Shenandoah Garbage Collector**
+- **Concurrent Compaction:**
+  - Shenandoah GC performs **concurrent marking** of live objects and **concurrent evacuation (compaction)** to move objects and release fragmented memory.
+  - This minimizes STW pauses, making pause times independent of heap size.
+- **Goal:** Low-latency performance for applications requiring responsiveness.
+
+---
+
+### **4. Concurrent Mark-Sweep (CMS) Collector** (Deprecated in JDK 9, Removed in JDK 14)
+- **Concurrent Marking:**
+  - CMS GC performed most of its collection work (marking live objects) concurrently with application threads.
+  - However, it suffered from fragmentation issues as it lacked compaction.
+- **Note:** CMS has been replaced by modern collectors like G1GC, ZGC, and Shenandoah.
+
+---
+
+### **Comparison:**
+| Garbage Collector  | Key Concurrent Features                      | Stop-the-World Impact          | Target Use Case                       |
+|--------------------|-----------------------------------------------|--------------------------------|---------------------------------------|
+| **G1GC**           | Concurrent marking of live objects           | Moderate, predictable pauses   | Balanced throughput and latency      |
+| **ZGC**            | Fully concurrent GC, including compaction    | Very low, ~few milliseconds    | Ultra-low latency and large heaps    |
+| **Shenandoah GC**  | Concurrent marking and concurrent compaction | Low, independent of heap size  | Low-latency applications              |
+
+---
+
+### **Summary**
+Among modern JVM garbage collectors, **ZGC** and **Shenandoah GC** are the most advanced in concurrent collection, focusing on minimizing pauses. **G1GC** also performs concurrent collection but balances it with higher throughput compared to ZGC and Shenandoah.
+
+If you'd like, I can explain the algorithms behind these concurrent mechanisms or help you configure them for your application!
